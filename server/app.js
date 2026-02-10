@@ -61,14 +61,14 @@ app.get('/cities', (req, res) => {
     countries: countries.countries
   }
 
-  // Renderitza la plantilla cities.hbs
-  res.render('cities', data);
+  // Renderitza la plantilla informe.hbs
+  res.render('informe', data);
 });
 
 // Start server
 const httpServer = app.listen(port, () => {
   console.log(`http://localhost:${port}`);
-  console.log(`http://localhost:${port}/cities`);
+  console.log(`http://localhost:${port}/informe`);
 });
 
 // Graceful shutdown
