@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/estils.css">
+    <title>Informe</title>
+</head>
+<body>
+    {{> header}}
+    
+    <h1>{{site.title}}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>País</th>
+                <th>Població</th>
+                <th>Tipus</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each cities}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{lookup ../countries country}}</td>
+                <td>
+                    {{#if population}}
+                        {{#if (lte population 800000)}}
+                            {{population}} - Petita
+                        {{else}}
+                            {{population}} - Gran
+                        {{/if}}
+                    {{else}}
+                        Null
+                    {{/if}}
+                </td>
+                <td>
+                    {{#if coastal}}
+                        🌊 Costanera
+                    {{else}}
+                        Interior
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // Registrar "Helpers .hbs" aquí
-hbs.registerHelper('gt', (a, b) => a > b);
+hbs.registerHelper('lte', (a, b) => a <= b);
 
 // Partials de Handlebars
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
@@ -41,10 +41,10 @@ app.get('/', (req, res) => {
   res.render('index', data);
 });
 
-app.get('/cities', (req, res) => {
+app.get('/informe', (req, res) => {
 
   // Legim els fitxers JSON
-  const sites = JSON.parse(
+  const site = JSON.parse(
     fs.readFileSync(path.join(__dirname, 'data', 'site.json'), 'utf8')
   );
   const cities = JSON.parse(
@@ -56,7 +56,7 @@ app.get('/cities', (req, res) => {
 
   // Preparem les dades per a la plantilla
   data = {
-    sites: sites,
+    site: site,
     cities: cities.cities,
     countries: countries.countries
   }
