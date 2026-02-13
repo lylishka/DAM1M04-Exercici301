@@ -7,44 +7,48 @@
     <title>Informe</title>
 </head>
 <body>
-    {{> header}}
-    
-    <h1>{{site.title}}</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>País</th>
-                <th>Població</th>
-                <th>Tipus</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each cities}}
-            <tr>
-                <td>{{name}}</td>
-                <td>{{lookup ../countries country}}</td>
-                <td>
-                    {{#if population}}
-                        {{#if (lte population 800000)}}
-                            {{population}} - Petita
+    <header>
+        {{> header}}
+    </header>
+    <main>
+        <h1>{{site.title}}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>País</th>
+                    <th>Població</th>
+                    <th>Tipus</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each cities}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{lookup ../countries country}}</td>
+                    <td class="poblacion">
+                        {{#if population}}
+                            {{population}}
+                            {{#if (lte population 800000)}}
+                                <span class="etiqueta pequeña">petita</span>
+                            {{else}}
+                                <span class="etiqueta grande">gran</span>
+                            {{/if}}
                         {{else}}
-                            {{population}} - Gran
+                            <span class="vacio">null</span>
                         {{/if}}
-                    {{else}}
-                        Null
-                    {{/if}}
-                </td>
-                <td>
-                    {{#if coastal}}
-                        🌊 Costanera
-                    {{else}}
-                        Interior
-                    {{/if}}
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+                    </td>
+                    <td>
+                        {{#if coastal}}
+                            🌊 Costanera
+                        {{else}}
+                            Interior
+                        {{/if}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>

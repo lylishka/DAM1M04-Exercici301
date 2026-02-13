@@ -7,13 +7,16 @@
     <title>Principal</title>
 </head>
 <body>
-    {{> header}}
-    
-    <h1>{{site.title}}</h1>
-    <h2>{{site.subtitle}}</h2>
-    <p>{{site.notice}}</p>
-    {{#if site.showWarning}}
-        <span>Bloque de HTML</span>
-    {{/if}}
+    <header>
+        {{> header}}
+    </header>
+    <main class="contenedor">
+        <h1>{{site.title}}</h1>
+        <h2>{{site.subtitle}}</h2>
+        <p>{{site.notice}}</p>
+        {{#if site.showWarning}}
+            <span>Bloque de HTML</span>
+        {{/if}}
+    </main>
 </body>
 </html>
